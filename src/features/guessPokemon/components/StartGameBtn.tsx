@@ -31,12 +31,10 @@ const StartGameBtn: React.SFC<StartGameBtnProps> = () => {
     setPokData(PokemonData)
   };
 
- console.log(pokData?.pokemonId)
- const src = `https://pokeres.bastionbot.org/images/pokemon/${pokData?.pokemonId}.png`
 
   return (
     <>
-    <img src={src}/>
+    {pokData && <img src={`https://pokeres.bastionbot.org/images/pokemon/${pokData?.pokemonId}.png`} alt="pokemon"/>}
       <Btn onClick={drawPokemon}>
         <StartBtnTxt>Wylosuj pokemona</StartBtnTxt>
       </Btn>
