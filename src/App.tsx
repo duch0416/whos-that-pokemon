@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
         vertical-align: baseline;
         text-decoration: none;
         outline: 0;
+        font-family: 'Cantora One', sans-serif;
     }
 `;
 

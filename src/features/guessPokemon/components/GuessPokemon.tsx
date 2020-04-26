@@ -3,19 +3,26 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import StartGameBtn from "./StartGameBtn"
+import PokImg from "./PokImg"
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: red;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 `;
 
-const PokImg = styled.img`
-  width: 160px;
-  margin-bottom: 30px;
+const Title = styled.h1`
+  margin-top: 10px;
+  width: 100%;
+  font-size: 22px;
+  color: white;
+  text-align: center;
 `
+
 
 type PokemonData = {
   pokemonName: string | undefined,
@@ -28,7 +35,8 @@ const GuessPokemon: React.SFC = () => {
 
   return (
     <Wrapper>
-      {pokData && <PokImg src={`https://pokeres.bastionbot.org/images/pokemon/${pokData?.pokemonId}.png`} alt="pokemon"/>}
+      <Title>Who's That Pokemon?</Title>
+      <PokImg pokId={pokData?.pokemonId}/>
       <StartGameBtn setPokData={setPokData}/>
     </Wrapper>
   );

@@ -9,6 +9,7 @@ const Wrapper = styled.div`
     align-items: center;
     height: 100vh;
     width: 100%;
+    background-color: #4A91F2;
 `
 
 const HomePage: React.SFC = () => {

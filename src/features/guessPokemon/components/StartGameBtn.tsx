@@ -9,6 +9,7 @@ const Btn = styled.button`
   height: 50px;
   border-radius: 30px;
   box-shadow: 0px 2px 8px 0px #00000029;
+  margin-bottom: 10px;
 `;
 const StartBtnTxt = styled.p`
   color: white;
