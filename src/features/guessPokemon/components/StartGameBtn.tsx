@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import styled from "styled-components";
 
 import { drawPokemonData } from "../actions/drawPokemonData";
@@ -15,16 +14,14 @@ const StartBtnTxt = styled.p`
   color: white;
 `;
 
-type PokemonData = {
-    pokemonName: string | undefined,
-    pokemonId: number
-}
+
     
 
-interface StartGameBtnProps {}
+interface StartGameBtnProps {
+  setPokData: any;
+}
 
-const StartGameBtn: React.SFC<StartGameBtnProps> = () => {
-  const [pokData, setPokData] = useState<PokemonData>();
+const StartGameBtn: React.SFC<StartGameBtnProps> = ({setPokData}) => {
   const drawPokemon = async () => {
     const PokemonData = await drawPokemonData();
     console.log(PokemonData)
@@ -34,7 +31,6 @@ const StartGameBtn: React.SFC<StartGameBtnProps> = () => {
 
   return (
     <>
-    {pokData && <img src={`https://pokeres.bastionbot.org/images/pokemon/${pokData?.pokemonId}.png`} alt="pokemon"/>}
       <Btn onClick={drawPokemon}>
         <StartBtnTxt>Wylosuj pokemona</StartBtnTxt>
       </Btn>
