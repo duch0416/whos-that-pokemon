@@ -1,7 +1,10 @@
 import * as React from "react";
+import { useReducer } from "react";
 import styled from "styled-components";
 
 import { drawPokemonData } from "../actions/drawPokemonData";
+import {pokemonReducer, setPokemonName} from "../../../store/PokemonReducer"
+import {initialState} from "../../../store/PokemonContext"
 
 const Btn = styled.button`
   background-color: #00a86b;
@@ -10,6 +13,7 @@ const Btn = styled.button`
   border-radius: 30px;
   box-shadow: 0px 2px 8px 0px #00000029;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 const StartBtnTxt = styled.p`
   color: white;
@@ -23,9 +27,10 @@ interface StartGameBtnProps {
 }
 
 const StartGameBtn: React.SFC<StartGameBtnProps> = ({setPokData}) => {
+  const [state, dispatch] = useReducer(pokemonReducer, initialState)
   const drawPokemon = async () => {
     const PokemonData = await drawPokemonData();
-    console.log(PokemonData)
+    dispatch(state.pokName = PokemonData.pokemonName)
     setPokData(PokemonData)
   };
 

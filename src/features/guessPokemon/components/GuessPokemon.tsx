@@ -1,9 +1,12 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 
 import StartGameBtn from "./StartGameBtn"
 import PokImg from "./PokImg"
+import {PokemonContext} from "../../../store/PokemonContext"
+
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,8 +34,9 @@ type PokemonData = {
 
 const GuessPokemon: React.SFC = () => {
   const [pokData, setPokData] = useState<PokemonData>();
-  console.log(pokData)
+  const pokName = useContext(PokemonContext)
 
+  console.log(pokName)
   return (
     <Wrapper>
       <Title>Who's That Pokemon?</Title>
