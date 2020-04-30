@@ -2,7 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 
 import GuessPokemon from "../features/guessPokemon/components/GuessPokemon";
-import { PokemonProvider, initialState } from "../store/PokemonContext";
+import {PokemonProvider} from "../store/PokemonReducer";
+
 
 
 
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
 const HomePage: React.SFC = () => {
   return (
     <Wrapper>
-      <PokemonProvider value={initialState}>
+      <PokemonProvider>
         <GuessPokemon />
       </PokemonProvider>
     </Wrapper>
