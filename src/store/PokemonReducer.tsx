@@ -1,13 +1,13 @@
 import {initialState} from "./PokemonContext"
 
 enum Actions {
-    SET_POK_NAME = "set pokemon name"
+    SET_POK_NAME = "setPokemonName"
 }
 
-export const setPokemonName = (name: string | undefined) => {
+export const setPokemonName = (payload: string | undefined) => {
     return {
        type: Actions.SET_POK_NAME,
-       payload: name
+       payload
     }
 }
 

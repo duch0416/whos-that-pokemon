@@ -5,6 +5,7 @@ import GuessPokemon from "../features/guessPokemon/components/GuessPokemon";
 import { PokemonProvider, initialState } from "../store/PokemonContext";
 
 
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
