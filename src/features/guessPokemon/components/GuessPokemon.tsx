@@ -1,11 +1,15 @@
 import * as React from "react";
-import {  useContext } from "react";
+import { useContext, useReducer } from "react";
 import styled from "styled-components";
 
-import PokImg from "./PokImg"
-import GameInterface from "./GameInterface"
-import {PokemonContext} from "../../../store/PokemonReducer"
-
+import PokImg from "./PokImg";
+import GameInterface from "./GameInterface";
+import { PokemonContext } from "../../../store/Pokemon/PokemonReducer";
+import {
+  initState,
+  guessReducer,
+  GuessStatusProvider,
+} from "../../../store/GuessStatus/GueesReducer";
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,23 +27,26 @@ const Title = styled.h1`
   font-size: 22px;
   color: white;
   text-align: center;
-`
-
+`;
 
 type PokemonData = {
-  pokemonName: string | undefined,
-  pokemonId: number
-}
+  pokemonName: string | undefined;
+  pokemonId: number;
+};
 
 const GuessPokemon: React.SFC = () => {
-  const {state} = useContext(PokemonContext)
+  const { state } = useContext(PokemonContext);
+  const [guessState, dispatch] = useReducer(guessReducer, initState);
 
-  console.log(state)
+  console.log(guessState);
+  console.log(state);
   return (
     <Wrapper>
       <Title>Who's That Pokemon?</Title>
-      <PokImg pokId={state?.pokId}/>
-      <GameInterface/>
+      <PokImg pokId={state?.pokId} />
+      <GuessStatusProvider value={guessState}>
+        <GameInterface />
+      </GuessStatusProvider>
     </Wrapper>
   );
 };

@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import styled from "styled-components";
 
 import { drawPokemonData } from "../actions/drawPokemonData";
-import {PokemonContext, setPokemonName} from "../../../store/PokemonReducer"
+import {PokemonContext, setPokemonName} from "../../../store/Pokemon/PokemonReducer"
 
 
 const Btn = styled.button`

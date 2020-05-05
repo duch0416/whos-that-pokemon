@@ -2,7 +2,7 @@ import * as React from 'react';
 import {  useContext } from "react";
 import styled from "styled-components"
 
-import {PokemonContext} from "../../../store/PokemonReducer"
+import {PokemonContext} from "../../../store/Pokemon/PokemonReducer"
 import {useGuess} from "../../../hooks/useGuess"
 
 const Input = styled.input`
@@ -17,10 +17,9 @@ const Input = styled.input`
  
 const GuessInput: React.SFC= () => {
     const {state} = useContext(PokemonContext)
-    const {onChange, inputValue, guessStatus} = useGuess(state.pokName)
+    const {onChange, inputValue} = useGuess(state.pokName)
 
 
-    console.log(guessStatus)
     return ( 
         <Input type="text" onChange={onChange} value={inputValue} placeholder="guess name"/>
      );

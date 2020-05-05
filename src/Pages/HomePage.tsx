@@ -2,9 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import GuessPokemon from "../features/guessPokemon/components/GuessPokemon";
-import {PokemonProvider} from "../store/PokemonReducer";
-
-
+import {PokemonProvider} from "../store/Pokemon/PokemonReducer";
 
 
 const Wrapper = styled.div`
