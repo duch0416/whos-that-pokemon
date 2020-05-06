@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useReducer} from 'react';
 
 export const initState = {status: false};
 
@@ -7,8 +7,8 @@ enum Actions {
     SET_FALSE = "set false",
 }
 
-export const GuessStatusContext = React.createContext(initState)
-export const GuessStatusProvider = GuessStatusContext.Provider
+export const GuessStatusContext = React.createContext<{guessStatus: any, dispatch: React.Dispatch<any>}>({guessStatus: initState, dispatch: () => null})
+const Provider = GuessStatusContext.Provider
 
 export const setStatusToTrue = () => {
     return {
@@ -22,7 +22,7 @@ export const setStatusToFalse = () => {
     }
 }
 
-export const guessReducer = (state:any, action:any) => {
+const guessReducer = (state:any, action:any) => {
     switch (action.type) {
         case Actions.SET_TRUE:
           return {status: state.status = true};
@@ -31,4 +31,14 @@ export const guessReducer = (state:any, action:any) => {
         default:
           return state
       }
+}
+
+export const GuessStatusProvider: React.FC = ({children}) => {
+  const [guessStatus, dispatch] = useReducer(guessReducer, initState);
+
+  return (
+    <Provider value={{guessStatus, dispatch}}>
+      {children}
+    </Provider>
+  )
 }
