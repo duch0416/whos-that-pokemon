@@ -6,6 +6,7 @@ import PokImg from "./PokImg";
 import GameInterface from "./GameInterface";
 import { PokemonContext } from "../../../store/Pokemon/PokemonReducer";
 import {  GuessStatusContext } from "../../../store/GuessStatus/GueesReducer";
+import CorrectAnswer from "./CorrectAnswer"
 
 const Wrapper = styled.div`
   display: flex;
@@ -40,7 +41,8 @@ const GuessPokemon: React.SFC = () => {
   return (
     <Wrapper>
       <Title>Who's That Pokemon?</Title>
-      {!guessStatus.status && <PokImg pokId={state?.pokId} />}
+      {/* {!guessStatus.status && <PokImg pokId={state?.pokId} />} */}
+      {!guessStatus.status && <CorrectAnswer/>}
         <GameInterface />
     </Wrapper>
   );
