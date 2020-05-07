@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { drawPokemonData } from "../actions/drawPokemonData";
 import {PokemonContext, setPokemonName} from "../../../store/Pokemon/PokemonReducer"
+import {GuessStatusContext, setStatusToFalse} from "../../../store/GuessStatus/GueesReducer"
 
 
 const Btn = styled.button`
@@ -26,16 +27,18 @@ const StartBtnTxt = styled.p`
 
 const StartGameBtn: React.SFC = () => {
   const {dispatch} = useContext(PokemonContext)
+  const {setStatus} = useContext(GuessStatusContext)
 
 
   const drawPokemon = async () => {
     const {pokemonName, pokemonId} = await drawPokemonData();
     dispatch(setPokemonName(pokemonName, pokemonId));
+    setStatus(setStatusToFalse())
   };
 
   return (
     <Btn onClick={drawPokemon}>
-      <StartBtnTxt>Wylosuj pokemona</StartBtnTxt>
+      <StartBtnTxt>Draw Pokemon</StartBtnTxt>
     </Btn>
   );
 };

@@ -29,6 +29,7 @@ const CorrectAnswer: React.SFC = () => {
         <Img src="check.svg" />
       </GreenCircle>
       <Text>Correct Answer</Text>
+      <Text>Draw again</Text>
     </div>
   );
 };

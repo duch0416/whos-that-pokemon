@@ -7,7 +7,8 @@ enum Actions {
     SET_FALSE = "set false",
 }
 
-export const GuessStatusContext = React.createContext<{guessStatus: any, dispatch: React.Dispatch<any>}>({guessStatus: initState, dispatch: () => null})
+export const GuessStatusContext = React.createContext<{guessStatus: any, setStatus: React.Dispatch<any>}>
+({guessStatus: initState, setStatus: () => null})
 const Provider = GuessStatusContext.Provider
 
 export const setStatusToTrue = () => {
@@ -34,10 +35,10 @@ const guessReducer = (state:any, action:any) => {
 }
 
 export const GuessStatusProvider: React.FC = ({children}) => {
-  const [guessStatus, dispatch] = useReducer(guessReducer, initState);
+  const [guessStatus, setStatus] = useReducer(guessReducer, initState);
 
   return (
-    <Provider value={{guessStatus, dispatch}}>
+    <Provider value={{guessStatus, setStatus}}>
       {children}
     </Provider>
   )

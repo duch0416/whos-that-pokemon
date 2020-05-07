@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import StartGameBtn from "./StartGameBtn";
-import GuessInput from "./GuessInput";
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,7 +17,6 @@ const GameInterface: React.SFC<GameInterfaceProps> = () => {
   return (
     <Wrapper>
       <StartGameBtn />
-      <GuessInput />
     </Wrapper>
   );
 };
